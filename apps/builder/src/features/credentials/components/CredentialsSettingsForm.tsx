@@ -245,6 +245,8 @@ const CredentialsIcon = ({
       return <StripeLogo {...props} />;
     case "whatsApp":
       return <WhatsAppLogo {...props} />;
+    case "hinova":
+      return <BlockIcon type={IntegrationBlockType.HINOVA} {...props} />;
     case "http proxy":
       return null;
     default:
@@ -268,6 +270,8 @@ const CredentialsLabel = ({
       return <p className={cn("text-sm", className)}>Stripe</p>;
     case "whatsApp":
       return <p className={cn("text-sm", className)}>WhatsApp</p>;
+    case "hinova":
+      return <p className={cn("text-sm", className)}>Hinova</p>;
     case "http proxy":
       return null;
     default:

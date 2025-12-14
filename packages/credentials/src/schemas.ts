@@ -88,11 +88,33 @@ export const httpProxyCredentialsSchema = z
   .merge(credentialsBaseSchema);
 export type HttpProxyCredentials = z.infer<typeof httpProxyCredentialsSchema>;
 
+export const atomosChatCredentialsSchema = z
+  .object({
+    type: z.literal("atomosChat"),
+    data: z.object({
+      apiKey: z.string(),
+    }),
+  })
+  .merge(credentialsBaseSchema);
+export type AtomosChatCredentials = z.infer<typeof atomosChatCredentialsSchema>;
+
+export const hinovaCredentialsSchema = z
+  .object({
+    type: z.literal("hinova"),
+    data: z.object({
+      token: z.string(),
+    }),
+  })
+  .merge(credentialsBaseSchema);
+export type HinovaCredentials = z.infer<typeof hinovaCredentialsSchema>;
+
 export const creatableCredentialsSchemas = [
   smtpCredentialsSchema,
   googleSheetsCredentialsSchema,
   stripeCredentialsSchema,
   whatsAppCredentialsSchema,
+  atomosChatCredentialsSchema,
+  hinovaCredentialsSchema,
 ] as const;
 
 const credentialsSchema = z.discriminatedUnion("type", [
@@ -114,6 +136,8 @@ export const credentialsTypes = [
   "stripe",
   "whatsApp",
   "http proxy",
+  "atomosChat",
+  "hinova",
   ...(Object.keys(forgedCredentialsSchemas) as Array<
     keyof typeof forgedCredentialsSchemas
   >),

@@ -9,4 +9,6 @@ export enum IntegrationBlockType {
   PABBLY_CONNECT = "Pabbly",
   CHATWOOT = "Chatwoot",
   PIXEL = "Pixel",
+  ATOMOS_CHAT = "AtomosChat",
+  HINOVA = "Hinova",
 }

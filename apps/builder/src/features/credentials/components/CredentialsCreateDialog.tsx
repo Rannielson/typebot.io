@@ -3,6 +3,7 @@ import { forgedBlocks } from "@typebot.io/forge-repository/definitions";
 import { Dialog } from "@typebot.io/ui/components/Dialog";
 import { CreateStripeCredentialsDialogBody } from "@/features/blocks/inputs/payment/components/CreateStripeCredentialsDialog";
 import { GoogleSheetConnectDialogBody } from "@/features/blocks/integrations/googleSheets/components/GoogleSheetsConnectDialog";
+import { HinovaCredentialsDialogBody } from "@/features/blocks/integrations/hinova/components/HinovaCredentialsDialog";
 import { SmtpCredentialsCreateDialogBody } from "@/features/blocks/integrations/sendEmail/components/SmtpCredentialsCreateDialog";
 import { useFeatureFlagsQuery } from "@/features/featureFlags/useFeatureFlagsQuery";
 import { ForgedCredentialsCreateDialogBody } from "@/features/forge/components/credentials/ForgedCredentialsCreateDialog";
@@ -64,6 +65,12 @@ const CredentialsCreateDialogPopup = ({
         is360DialogEnabled={featureFlags?.["360dialog"] ?? false}
         onNewCredentials={onSubmit}
         onClose={onClose}
+      />
+    );
+  if (type === "hinova")
+    return (
+      <HinovaCredentialsDialogBody
+        onNewCredentials={onSubmit}
       />
     );
   if (type === "http proxy") return null;

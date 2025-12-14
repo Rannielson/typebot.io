@@ -2,7 +2,9 @@ import { TRPCError } from "@trpc/server";
 import { encrypt } from "@typebot.io/credentials/encrypt";
 import type { Credentials } from "@typebot.io/credentials/schemas";
 import {
+  atomosChatCredentialsSchema,
   googleSheetsCredentialsSchema,
+  hinovaCredentialsSchema,
   smtpCredentialsSchema,
   stripeCredentialsSchema,
   whatsAppCredentialsSchema,
@@ -27,6 +29,8 @@ const credentialsCreateSchema = z
     smtpCredentialsSchema.pick(inputShape),
     googleSheetsCredentialsSchema.pick(inputShape),
     whatsAppCredentialsSchema.pick(inputShape),
+    atomosChatCredentialsSchema.pick(inputShape),
+    hinovaCredentialsSchema.pick(inputShape),
     ...Object.values(forgedCredentialsSchemas).map((schema) =>
       schema.pick(inputShape),
     ),

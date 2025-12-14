@@ -20,9 +20,11 @@ import { RatingInputSettings } from "@/features/blocks/inputs/rating/components/
 import { TextInputSettings } from "@/features/blocks/inputs/textInput/components/TextInputSettings";
 import { TimeInputSettings } from "@/features/blocks/inputs/time/components/TimeInputSettings";
 import { UrlInputSettings } from "@/features/blocks/inputs/url/components/UrlInputSettings";
+import { AtomosChatSettings } from "@/features/blocks/integrations/atomosChat/components/AtomosChatSettings";
 import { ChatwootSettings } from "@/features/blocks/integrations/chatwoot/components/ChatwootSettings";
 import { GoogleAnalyticsSettings } from "@/features/blocks/integrations/googleAnalytics/components/GoogleAnalyticsSettings";
 import { GoogleSheetsSettings } from "@/features/blocks/integrations/googleSheets/components/GoogleSheetsSettings";
+import { HinovaSettings } from "@/features/blocks/integrations/hinova/components/HinovaSettings";
 import { HttpRequestSettings } from "@/features/blocks/integrations/httpRequest/components/HttpRequestSettings";
 import { MakeComSettings } from "@/features/blocks/integrations/makeCom/components/MakeComSettings";
 import { OpenAISettings } from "@/features/blocks/integrations/openai/components/OpenAISettings";
@@ -341,6 +343,16 @@ export const NodeSettings = ({
     case IntegrationBlockType.PIXEL: {
       return (
         <PixelSettings options={node.options} onOptionsChange={updateOptions} />
+      );
+    }
+    case IntegrationBlockType.ATOMOS_CHAT: {
+      return (
+        <AtomosChatSettings block={node} onOptionsChange={updateOptions} />
+      );
+    }
+    case IntegrationBlockType.HINOVA: {
+      return (
+        <HinovaSettings block={node} onOptionsChange={updateOptions} />
       );
     }
     case LogicBlockType.CONDITION:

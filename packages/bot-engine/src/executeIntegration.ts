@@ -4,8 +4,10 @@ import type { SessionState } from "@typebot.io/chat-session/schemas";
 import { env } from "@typebot.io/env";
 import { isNotDefined } from "@typebot.io/lib/utils";
 import type { SessionStore } from "@typebot.io/runtime-session-store";
+import { executeAtomosChatBlock } from "./blocks/integrations/atomosChat/executeAtomosChatBlock";
 import { executeChatwootBlock } from "./blocks/integrations/chatwoot/executeChatwootBlock";
 import { executeGoogleSheetBlock } from "./blocks/integrations/googleSheets/executeGoogleSheetBlock";
+import { executeHinovaBlock } from "./blocks/integrations/hinova/executeHinovaBlock";
 import { executeHttpRequestBlock } from "./blocks/integrations/httpRequest/executeHttpRequestBlock";
 import { executeGoogleAnalyticsBlock } from "./blocks/integrations/legacy/googleAnalytics/executeGoogleAnalyticsBlock";
 import { executeOpenAIBlock } from "./blocks/integrations/legacy/openai/executeOpenAIBlock";
@@ -61,6 +63,16 @@ export const executeIntegration = async ({
       };
     case IntegrationBlockType.PIXEL:
       return executePixelBlock(block, { state, sessionStore });
+    case IntegrationBlockType.ATOMOS_CHAT:
+      return {
+        ...(await executeAtomosChatBlock(block, { state, sessionStore })),
+        startTimeShouldBeUpdated: true,
+      };
+    case IntegrationBlockType.HINOVA:
+      return {
+        ...(await executeHinovaBlock(block, { state, sessionStore })),
+        startTimeShouldBeUpdated: true,
+      };
     default:
       return {
         ...(await executeForgedBlock(block, { state, sessionStore })),

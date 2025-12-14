@@ -25,7 +25,9 @@ import { RatingInputIcon } from "@/features/blocks/inputs/rating/components/Rati
 import { TextInputIcon } from "@/features/blocks/inputs/textInput/components/TextInputIcon";
 import { TimeInputIcon } from "@/features/blocks/inputs/time/components/TimeInputIcon";
 import { UrlInputIcon } from "@/features/blocks/inputs/url/components/UrlInputIcon";
+import { AtomosChatLogo } from "@/features/blocks/integrations/atomosChat/components/AtomosChatLogo";
 import { ChatwootLogo } from "@/features/blocks/integrations/chatwoot/components/ChatwootLogo";
+import { HinovaLogo } from "@/features/blocks/integrations/hinova/components/HinovaLogo";
 import { GoogleAnalyticsLogo } from "@/features/blocks/integrations/googleAnalytics/components/GoogleAnalyticsLogo";
 import { GoogleSheetsLogo } from "@/features/blocks/integrations/googleSheets/components/GoogleSheetsLogo";
 import { MakeComLogo } from "@/features/blocks/integrations/makeCom/components/MakeComLogo";
@@ -179,6 +181,10 @@ export const BlockIcon = ({ type, className }: BlockIconProps): JSX.Element => {
       return <ChatwootLogo className={className} />;
     case IntegrationBlockType.PIXEL:
       return <PixelLogo className={className} />;
+    case IntegrationBlockType.ATOMOS_CHAT:
+      return <AtomosChatLogo className={className} />;
+    case IntegrationBlockType.HINOVA:
+      return <HinovaLogo className={className} />;
     case "start":
       return <Flag02Icon className={className} />;
     case IntegrationBlockType.OPEN_AI:
